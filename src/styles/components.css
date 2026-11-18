@@ -1,0 +1,301 @@
+/* Selected presentation styles from the desktop editor. */
+.note-font-size-picker {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  -webkit-app-region: no-drag;
+}
+
+.note-font-size-picker > .note-font-size-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.note-font-size-trigger svg { width: 15px; height: 15px; }
+.note-font-size-trigger:hover,
+.note-font-size-trigger[aria-expanded="true"] { background: var(--bg-hover); color: var(--text-primary); }
+.note-font-size-trigger:focus-visible { outline: 2px solid var(--accent-color); outline-offset: -2px; }
+
+.note-font-size-picker > .note-font-size-control {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  height: auto;
+  padding: 6px;
+  border: 1px solid var(--workspace-border);
+  border-radius: 8px;
+  background: var(--panel-bg, var(--bg-primary, #fff));
+  box-shadow: 0 4px 16px #00000012;
+}
+
+.note-font-size-control {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  -webkit-app-region: no-drag;
+}
+
+.note-font-size-control > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.note-font-size-control > button:hover:not(:disabled) {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.note-font-size-control > button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
+}
+
+.note-font-size-control > button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.note-font-size-control svg { width: 12px; height: 12px; }
+.note-font-size-control output {
+  min-width: 18px;
+  text-align: center;
+  font: 11px / 20px var(--font-system);
+  font-variant-numeric: tabular-nums;
+}
+
+.note-outline-rail,
+.note-outline-panel {
+  --note-outline-line: rgba(64, 64, 64, 0.2);
+  --note-outline-line-muted: rgba(64, 64, 64, 0.14);
+  --note-outline-line-faint: rgba(64, 64, 64, 0.1);
+  --note-outline-line-hover: rgba(64, 64, 64, 0.38);
+  --note-outline-line-active: rgba(64, 64, 64, 0.46);
+  --note-outline-text: rgb(48, 48, 48);
+  --note-outline-text-secondary: rgb(84, 84, 84);
+  --note-outline-text-muted: rgb(116, 116, 116);
+  --note-outline-hover: rgba(64, 64, 64, 0.055);
+  --note-outline-focus: rgba(64, 64, 64, 0.2);
+  --note-outline-scrollbar: rgba(64, 64, 64, 0.1);
+}
+
+:root[data-theme="dark"] .note-outline-rail,
+:root[data-theme="dark"] .note-outline-panel {
+  --note-outline-line: rgba(224, 224, 224, 0.2);
+  --note-outline-line-muted: rgba(224, 224, 224, 0.14);
+  --note-outline-line-faint: rgba(224, 224, 224, 0.1);
+  --note-outline-line-hover: rgba(224, 224, 224, 0.38);
+  --note-outline-line-active: rgba(224, 224, 224, 0.46);
+  --note-outline-text: rgb(222, 222, 222);
+  --note-outline-text-secondary: rgb(184, 184, 184);
+  --note-outline-text-muted: rgb(146, 146, 146);
+  --note-outline-hover: rgba(224, 224, 224, 0.065);
+  --note-outline-focus: rgba(224, 224, 224, 0.22);
+  --note-outline-scrollbar: rgba(224, 224, 224, 0.11);
+}
+
+.note-outline-rail {
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  width: 24px;
+  max-height: calc(100% - 72px);
+  overflow-y: auto;
+  transform: translateY(-50%);
+  scrollbar-width: none;
+  pointer-events: auto;
+}
+
+.note-outline-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.note-outline-item {
+  position: relative;
+  flex: 0 0 16px;
+  width: 24px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.note-outline-item::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 2px;
+  width: 19px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--note-outline-line);
+  transition: width 0.06s ease, background 0.06s ease, opacity 0.06s ease;
+}
+
+.note-outline-item.level-2::after {
+  width: 13px;
+  background: var(--note-outline-line-muted);
+}
+
+.note-outline-item.level-3::after {
+  width: 8px;
+  background: var(--note-outline-line-faint);
+}
+
+.note-outline-item:hover::after,
+.note-outline-item:focus-visible::after,
+.note-outline-item.is-hovered::after {
+  width: 21px;
+  height: 3px;
+  background: var(--note-outline-line-hover);
+}
+
+.note-outline-item:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--note-outline-focus);
+  outline-offset: -2px;
+}
+
+.note-outline-item.active::after {
+  width: 21px;
+  height: 3px;
+  background: var(--note-outline-line-active);
+}
+
+.note-outline-panel {
+  position: fixed;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  width: min(286px, calc(100vw - 40px));
+  max-height: min(480px, calc(100vh - 24px));
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--note-outline-line-muted);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--surface-control) 98%, var(--surface-workspace));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  animation: note-outline-panel-in 0.08s ease-out;
+}
+
+.note-outline-panel-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 7px 7px 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: var(--note-outline-scrollbar) transparent;
+  scrollbar-width: thin;
+}
+
+.note-outline-panel-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.note-outline-panel-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--note-outline-scrollbar);
+}
+
+.note-outline-panel-item {
+  display: block;
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 29px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--note-outline-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 620;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.note-outline-panel-item.level-1:not(:first-child) {
+  margin-top: 5px;
+}
+
+.note-outline-panel-item.level-2 {
+  padding-left: 27px;
+  color: var(--note-outline-text-secondary);
+  font-size: 12.5px;
+  font-weight: 450;
+}
+
+.note-outline-panel-item.level-3 {
+  padding-left: 44px;
+  color: var(--note-outline-text-muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.note-outline-panel-item-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-outline-panel-item:hover,
+.note-outline-panel-item:focus-visible,
+.note-outline-panel-item.is-hovered {
+  background: var(--note-outline-hover);
+  color: var(--note-outline-text);
+}
+
+.note-outline-panel-item:focus-visible {
+  outline: 2px solid var(--note-outline-focus);
+  outline-offset: -2px;
+}
+
+.note-outline-panel-item.active {
+  background: transparent;
+  color: var(--note-outline-text);
+  font-weight: 650;
+}
+
+@keyframes note-outline-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
